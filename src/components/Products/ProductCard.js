@@ -2,12 +2,20 @@ import React from 'react';
 import styles from './products.module.scss';
 import { BsCartPlus, BsCartXFill } from 'react-icons/bs';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-
 import { useLocation } from 'react-router-dom';
+import { addToCartAction } from './../../redux/actions/cartAction';
+import { useDispatch, useSelector } from 'react-redux';
+
 const ProductCard = ({ product }) => {
 	const { pathname } = useLocation();
 	const isInCart = pathname.includes('cart');
 	console.log('is', isInCart);
+
+	const dispatch = useDispatch();
+
+	const addToCart = () => {
+		dispatch(addToCartAction(product));
+	}
 
 	return (
 		<div className={styles['product-card']}>
@@ -37,7 +45,7 @@ const ProductCard = ({ product }) => {
 					) : (
 						<>
 							<h3>{product.price}EGP</h3>
-							<button>
+							<button onClick={addToCart}>
 								<BsCartPlus />
 							</button>
 						</>
