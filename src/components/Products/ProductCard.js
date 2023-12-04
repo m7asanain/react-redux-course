@@ -4,7 +4,7 @@ import { BsCartPlus, BsCartXFill } from 'react-icons/bs';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { useLocation } from 'react-router-dom';
 import { addToCartAction } from './../../redux/actions/cartAction';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const ProductCard = ({ product }) => {
 	const { pathname } = useLocation();
